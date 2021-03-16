@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "application".
@@ -36,7 +37,7 @@ class Application extends \yii\db\ActiveRecord
             [['car_id'], 'default', 'value' => null],
             [['car_id'], 'integer'],
             [['name', 'phone', 'email'], 'string', 'max' => 255],
-            [['car_id'], 'exist', 'skipOnError' => true, 'targetClass' => Car::className(), 'targetAttribute' => ['car_id' => 'id']],
+            [['car_id'], 'exist', 'skipOnError' => true, 'targetClass' => Car::class, 'targetAttribute' => ['car_id' => 'id']],
         ];
     }
 
@@ -55,6 +56,17 @@ class Application extends \yii\db\ActiveRecord
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->created_at = new Expression('NOW()');
+            }
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Gets query for [[Car]].
      *
@@ -62,6 +74,6 @@ class Application extends \yii\db\ActiveRecord
      */
     public function getCar()
     {
-        return $this->hasOne(Car::className(), ['id' => 'car_id']);
+        return $this->hasOne(Car::class, ['id' => 'car_id']);
     }
 }
