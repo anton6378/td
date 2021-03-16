@@ -27,4 +27,8 @@ export class ApiService {
     );
   }
 
+  postApplication(body: any): Observable<any> {
+    return this.http.post(this.endpoint('apply'), body);
+  }
+
 }

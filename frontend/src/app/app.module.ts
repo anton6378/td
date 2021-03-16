@@ -16,11 +16,13 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ApplicationComponent
+    ApplicationComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,

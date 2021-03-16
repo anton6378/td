@@ -4,6 +4,7 @@ import { Car } from "./models/car";
 import { Observable } from "rxjs";
 import { MatDialog } from "@angular/material/dialog";
 import { ApplicationComponent } from "./components/application/application.component";
+import { ThankYouComponent } from "./components/thank-you/thank-you.component";
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,11 @@ export class AppComponent implements OnInit {
   }
 
   apply(car: Car) {
-    this.dialog.open(ApplicationComponent, {data: car, width: 'calc(100vw - 60px)', maxWidth: '700px'});
+    const dialogRef = this.dialog.open(ApplicationComponent, {data: car, width: 'calc(100vw - 60px)', maxWidth: '700px'});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.dialog.open(ThankYouComponent);
+      }
+    });
   }
 }

@@ -3,7 +3,7 @@
 
   <p>Оставьте ваши контакты и мы расскажем о специальных предложениях</p>
 
-  <form id="form" [formGroup]="form" (submit)="submit()">
+  <form id="form" [formGroup]="form" (ngSubmit)="submit()">
 
     <mat-form-field appearance="outline">
       <mat-label>Представьтесь, пожалуйста</mat-label>
@@ -34,5 +34,5 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button type="submit" color="primary" form="form" mat-flat-button [disabled]="form.invalid">ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</button>
+  <button type="submit" color="primary" form="form" mat-flat-button [disabled]="form.invalid || (sub && !sub.closed)">ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</button>
 </mat-dialog-actions>
