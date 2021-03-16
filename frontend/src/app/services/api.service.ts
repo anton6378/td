@@ -3,13 +3,14 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Observable } from "rxjs";
 import { Car } from "../models/car";
+import { tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private readonly apiUrl = environment.apiUrl;
+  private readonly apiUrl = environment.backendUrl+'api/';
 
   constructor(private http: HttpClient) {
   }
@@ -18,8 +19,12 @@ export class ApiService {
     return this.apiUrl+method;
   }
 
-  getCars() {
-    return this.http.get<Observable<Car[]>>(this.endpoint('cars'));
+  getCars(): Observable<Car[]> {
+    return this.http.get<Car[]>(this.endpoint('cars')).pipe(
+      tap(result => result.forEach(item => {
+        item.picture = environment.backendUrl+'img/'+item.picture;
+      }))
+    );
   }
 
 }
