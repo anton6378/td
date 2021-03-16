@@ -1,11 +1,9 @@
 <div class="content">
 
   <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="24px grid">
-    <div fxFlex="100%" fxFlex.sm="50%" fxFlex.gt-sm="25%" *ngFor="let car of cars$|async" fxLayout>
+    <div fxFlex="100%" fxFlex.sm="50%" fxFlex.gt-sm="25%" fxFlex.gt-md="20%" fxFlex.gt-lg="16%" *ngFor="let car of cars$|async" fxLayout>
       <mat-card class="mat-elevation-z4" fxLayout="column" fxLayoutAlign="start stretch" fxFlex="0 1 300px" (click)="apply(car)">
-        <div class="img" [style.backgroundImage]="'url(\''+car.picture+'\')'">
-
-        </div>
+        <div class="img" [style.backgroundImage]="'url(\''+car.picture+'\')'"></div>
         <div class="mat-caption">{{car.quantity}} авто</div>
         <h3>{{car.name}}</h3>
 

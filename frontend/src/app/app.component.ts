@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from "./services/api.service";
 import { Car } from "./models/car";
 import { Observable } from "rxjs";
+import { MatDialog } from "@angular/material/dialog";
+import { ApplicationComponent } from "./components/application/application.component";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,10 @@ export class AppComponent implements OnInit {
 
   cars$: Observable<Car[]>;
 
-  constructor(private api: ApiService) {
+  constructor(
+    private api: ApiService,
+    private dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -20,6 +25,6 @@ export class AppComponent implements OnInit {
   }
 
   apply(car: Car) {
-
+    this.dialog.open(ApplicationComponent, {data: car, width: 'calc(100vw - 60px)', maxWidth: '700px'});
   }
 }

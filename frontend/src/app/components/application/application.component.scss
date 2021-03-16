@@ -1,0 +1,23 @@
+mat-form-field {
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+p {
+  margin: 30px 0;
+}
+
+:host ::ng-deep .mat-checkbox-layout{
+  white-space: normal !important;
+}
+
+:host ::ng-deep .mat-checkbox-inner-container{
+  margin-top: 4px;
+}
+
+button {
+  width: 100%;
+}

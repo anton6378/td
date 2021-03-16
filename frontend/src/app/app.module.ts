@@ -11,10 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from "@angular/common/http";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import '@angular/common/locales/global/ru';
+import { ApplicationComponent } from './components/application/application.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatInputModule } from "@angular/material/input";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,11 @@ import '@angular/common/locales/global/ru';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatInputModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru_RU' }

@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>ПОЛУЧИТЕ ВЫГОДНОЕ ПРЕДЛОЖЕНИЕ НА ПОКУПКУ АВТОМОБИЛЯ</h2>
+<mat-dialog-content>
+
+  <p>Оставьте ваши контакты и мы расскажем о специальных предложениях</p>
+
+  <form id="form" [formGroup]="form" (submit)="submit()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Представьтесь, пожалуйста</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="name.invalid && name.errors.required">Необходимо указать имя</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Телефон</mat-label>
+      <input matInput formControlName="phone" type="tel" placeholder="+7 999 123-45-67">
+      <mat-error *ngIf="phone.invalid && phone.errors.required">Необходимо указать телефон</mat-error>
+      <mat-error *ngIf="phone.invalid && phone.errors.pattern">Некорректный номер телефона</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+      <mat-error *ngIf="email.invalid && email.errors.required">Необходимо указать e-mail адрес</mat-error>
+      <mat-error *ngIf="email.invalid && email.errors.email">Некорректный e-mail адрес</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="accept">
+      Даю согласие на обработку персональных данных и соглашаюсь с политикой обработки персональных данных
+    </mat-checkbox>
+
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="submit" color="primary" form="form" mat-flat-button [disabled]="form.invalid">ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</button>
+</mat-dialog-actions>
