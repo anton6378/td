@@ -8,9 +8,16 @@ use yii\rest\Controller;
 
 class ApiController extends Controller
 {
-    public function beforeAction($action)
+    public function behaviors()
     {
-        return parent::beforeAction($action);
+        return [
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+                'cors' => [
+                    'Origin' => ['*']
+                ]
+            ],
+        ] + parent::behaviors();
     }
 
     public function actionCars()
